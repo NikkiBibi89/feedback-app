@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonieme Feedback Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .rating-item {
+            flex: 0 0 10%;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .rating-explanation {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 14px;
+            min-height: 60px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .privacy-notice {
+            font-size: 14px;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anonieme Feedback Tool</h1>
+        
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="managerSelect">Selecteer leidinggevende:</label>
+                <select id="managerSelect" required>
+                    <option value="">-- Kies een leidinggevende --</option>
+                    <option value="nurcan">Nurcan</option>
+                    <option value="shamiram">Shamiram</option>
+                    <option value="nikki">Nikki</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Communicatie:</label>
+                <div class="rating-container">
+                    <div class="rating-item">
+                        <input type="radio" id="comm1" name="communication" value="1" required>
+                        <label for="comm1">1</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm2" name="communication" value="2">
+                        <label for="comm2">2</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm3" name="communication" value="3">
+                        <label for="comm3">3</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm4" name="communication" value="4">
+                        <label for="comm4">4</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm5" name="communication" value="5">
+                        <label for="comm5">5</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm6" name="communication" value="6">
+                        <label for="comm6">6</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm7" name="communication" value="7">
+                        <label for="comm7">7</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm8" name="communication" value="8">
+                        <label for="comm8">8</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm9" name="communication" value="9">
+                        <label for="comm9">9</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="comm10" name="communication" value="10">
+                        <label for="comm10">10</label>
+                    </div>
+                </div>
+                <textarea class="rating-explanation" id="commExplanation" placeholder="Onderbouwing voor je beoordeling op communicatie (optioneel)" style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Ondersteuning:</label>
+                <div class="rating-container">
+                    <div class="rating-item">
+                        <input type="radio" id="supp1" name="support" value="1" required>
+                        <label for="supp1">1</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp2" name="support" value="2">
+                        <label for="supp2">2</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp3" name="support" value="3">
+                        <label for="supp3">3</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp4" name="support" value="4">
+                        <label for="supp4">4</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp5" name="support" value="5">
+                        <label for="supp5">5</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp6" name="support" value="6">
+                        <label for="supp6">6</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp7" name="support" value="7">
+                        <label for="supp7">7</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp8" name="support" value="8">
+                        <label for="supp8">8</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp9" name="support" value="9">
+                        <label for="supp9">9</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="supp10" name="support" value="10">
+                        <label for="supp10">10</label>
+                    </div>
+                </div>
+                <textarea class="rating-explanation" id="suppExplanation" placeholder="Onderbouwing voor je beoordeling op ondersteuning (optioneel)" style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Leiderschap:</label>
+                <div class="rating-container">
+                    <div class="rating-item">
+                        <input type="radio" id="lead1" name="leadership" value="1" required>
+                        <label for="lead1">1</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead2" name="leadership" value="2">
+                        <label for="lead2">2</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead3" name="leadership" value="3">
+                        <label for="lead3">3</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead4" name="leadership" value="4">
+                        <label for="lead4">4</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead5" name="leadership" value="5">
+                        <label for="lead5">5</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead6" name="leadership" value="6">
+                        <label for="lead6">6</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead7" name="leadership" value="7">
+                        <label for="lead7">7</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead8" name="leadership" value="8">
+                        <label for="lead8">8</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead9" name="leadership" value="9">
+                        <label for="lead9">9</label>
+                    </div>
+                    <div class="rating-item">
+                        <input type="radio" id="lead10" name="leadership" value="10">
+                        <label for="lead10">10</label>
+                    </div>
+                </div>
+                <textarea class="rating-explanation" id="leadExplanation" placeholder="Onderbouwing voor je beoordeling op leiderschap (optioneel)" style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="feedbackText">Gedetailleerde feedback:</label>
+                <textarea id="feedbackText" placeholder="Deel hier je feedback. Deze is volledig anoniem."></textarea>
+            </div>
+            
+            <button type="submit">Verstuur Feedback</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            Je feedback is succesvol verzonden! Bedankt voor je bijdrage.
+        </div>
+        
+        <div class="privacy-notice">
+            <p><strong>Privacy garantie:</strong> Deze tool verzamelt geen persoonlijke informatie. Je feedback wordt volledig anoniem verwerkt.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In een echte applicatie zou je hier de data naar een server sturen
+            // Voor deze demo simuleren we een succesvolle verzending
+            
+            setTimeout(function() {
+                document.getElementById('feedbackForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Data die je zou verzenden (hier alleen getoond voor demo-doeleinden)
+                const feedbackData = {
+                    manager: document.getElementById('managerSelect').value,
+                    communication: document.querySelector('input[name="communication"]:checked').value,
+                    communicationExplanation: document.getElementById('commExplanation').value,
+                    support: document.querySelector('input[name="support"]:checked').value,
+                    supportExplanation: document.getElementById('suppExplanation').value,
+                    leadership: document.querySelector('input[name="leadership"]:checked').value,
+                    leadershipExplanation: document.getElementById('leadExplanation').value,
+                    feedback: document.getElementById('feedbackText').value
+                };
+                
+                console.log('Verzonden feedback (in een echte app zou dit naar een server gaan):', feedbackData);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
